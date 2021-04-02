@@ -1,0 +1,150 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Namboo Chat</title>
+    <meta name="viewport" content="width=device-width,intial-scale=1" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="C:\xampp\htdocs\Namboo\css\style.css" />
+</head>
+<body>
+    <span class="top"></span>
+
+    <div class="container-fluid bg-white chatBox shadow-lg rounded">
+        <div class="row h-100">
+            <div class="col-md-4 pr-0 d-none d-md-block" id="side-1">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-10 col-sm-10 col-md-10">
+                                <img src="C:\xampp\htdocs\Namboo\images\pp.png" class="Profile-pic" />
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2">
+                                <i class="fas fa-arrow-left fa-2x d-md-none" style="font-size:20px;cursor:pointer;" onclick="hideChatList()"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color:#a290ce;">
+                            <input type="text" placeholder="Serach Namboo chat" class="form-control form-rounded" />
+                        </li>
+                        <li class="list-group-item list-group-item-action " onclick="StartChat(1)">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="C:\xampp\htdocs\Namboo\images\pp.png" class="Friend-pic" />
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="Name">User Name</div>
+                                    <div class="last-message">Last Message</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item list-group-item-action ">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="C:\xampp\htdocs\Namboo\images\pp.png" class="Friend-pic" />
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="Name">User Name</div>
+                                    <div class="last-message">Last Message</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item list-group-item-action ">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="C:\xampp\htdocs\Namboo\images\pp.png" class="Friend-pic" />
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="Name">User Name</div>
+                                    <div class="last-message">Last Message</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8 pl-0" id="side-2">
+                <div id="chatPanel" class="card" style="display:none;">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-8">
+                                <img src="C:\xampp\htdocs\Namboo\images\pp.png" class="Profile-pic" />
+                            </div>
+                            <div class="col-5 col-sm-5 col-md-5 col-lg-7">
+                                <div class="Name">User Name</div>
+                                <div class="last-message">Last seen 26/01/2021</div>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-3 icon">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip ml-4"></i>
+                                <i class="fas fa-ellipsis-v ml-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="messages">
+                        <div class="row">
+                            <div class="col-2 col-sm-1 col-md-1">
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <p class="receive">
+                                    Message From Sender
+                                    <span class="time float-right">2:15AM</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <p class="sent float-right">
+                                    Message Send by User
+                                    <span class="time float-right">2:15AM</span>
+                                </p>
+                            </div>
+                            <div class="col-2 col-sm-1 col-md-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-2 col-md-1">
+                                <i class="far fa-grin fa-2x"></i>
+                            </div>
+                            <div class="col-8 col-md-10">
+                                <input id="txtMessage" type="text" placeholder="Type here" class="form-control form-rounded" />
+                            </div>
+                            <div class="col-2 col-md-1">
+                                <i onclick="fn1()" id="icon1" class="far fa-paper-plane fa-2x" style="cursor:pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divStart" class="text-center">
+                    <i class="fas fa-comments mt-5" style="font-size:250px;"></i>
+                    <h2>Start chating with Naamboo....</h2>
+                    <a href="#" onclick="showChatList()" class="d-md-none">New Chat</a>
+                    <button onclick="signIn()" class="btn btn-primary">Sign in</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="C:\xampp\htdocs\Namboo\jquery-3.5.1"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="C:\xampp\htdocs\Namboo\Scripts\chat.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+    <script src="C:\xampp\htdocs\Namboo\Scripts\firebase.ini.js"></script>
+</body>
+</html>
